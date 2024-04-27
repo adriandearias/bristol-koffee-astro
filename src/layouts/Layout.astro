@@ -1,5 +1,7 @@
 ---
 import Header from '../components/Header.astro';
+// Supports weights 100-900
+import '@fontsource-variable/overpass';
 
 interface Props {
 	title: string;
@@ -25,15 +27,25 @@ const { title } = Astro.props;
 </html>
 <style is:global>
 	:root {
-		
+		color-scheme: light dark;
 	}
 	html {
-		font-family: system-ui, sans-serif;
+		font-family: 'Overpass Variable', system-ui, sans-serif;
 	}
 
 	body {
-		
 		display: flex;
+		align-items: center;
+		flex-direction: column;
 		justify-content: center;
+		min-height: 100vh;
 	}
+
+	@media (prefers-color-scheme: dark) {
+		body {
+			background-color: #f6f4ef;
+			color: black;
+		}
+	}
+
 </style>
