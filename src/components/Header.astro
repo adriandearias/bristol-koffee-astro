@@ -1,13 +1,37 @@
-<header class="flex justify-between items-center py-1 px-52 w-full shadow-md">
+<header
+  class="h-18 sticky top-0 z-50 bg-customGray w-full px-52 py-1 flex justify-between items-center rounded-b-lg"
+  style="position: sticky;"
+>
   <img
-      class="rounded-full w-20 h-20"
-      src="https://res.cloudinary.com/dtmrroz8t/image/upload/v1714293432/bristol_logo_tmp_nouozw.png"
-      alt="bristol logo"
-    />
+    class="rounded-full w-20 h-20"
+    src="https://res.cloudinary.com/dtmrroz8t/image/upload/v1714293432/bristol_logo_tmp_nouozw.png"
+    alt="bristol logo"
+  />
   <nav class="flex flex-row gap-x-10 items-center opacity-75">
-    <a href="/">Inicio</a>
-    <a href="/sobrenosotros">Sobre Nosotros</a>
-    <a href="/cafe">Nuestro Café</a>
-    <a href="/contacto">Contacto</a>
+    <a href="/" class="menu-link">Inicio</a>
+    <a href="/sobrenosotros" class="menu-link">Sobre Nosotros</a>
+    <a href="/cafe" class="menu-link">Nuestro Café</a>
+    <a href="/contacto" class="menu-link">Contacto</a>
   </nav>
 </header>
+
+<style>
+  .menu-link {
+    position: relative;
+  }
+
+  .menu-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    width: 100%;
+    height: 2px;
+    background-color: transparent;
+    transition: background-color 0.3s;
+  }
+
+  .menu-link:hover::after {
+    background-color: #2e2d26;
+  }
+</style>
