@@ -3,50 +3,52 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Bristol Koffee - Café">
-  <section class="py-12 bg-gray-100">
-    <div class="container mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Descripción -->
-        <div
-          class="col-span-2 md:col-span-1 lg:col-span-2 bg-white p-6 rounded shadow-md"
-        >
-          <h2 class="text-3xl font-semibold mb-4">El Mejor Café de Finca</h2>
-          <p class="text-gray-600 mb-4">
-            Bristol Koffee ofrece el mejor café de finca de la región. Nuestros
-            granos son cuidadosamente seleccionados a mano de las fincas más
-            exclusivas, cultivadas con amor y pasión por el arte del café.
+  <section class="bg-gray-100">
+    <main class="pt-8 pb-16 dark:bg-gray-900 antialiased">
+      <div class="flex justify-between px-4 mx-auto max-w-screen-lg">
+        <article class="mx-auto w-full">
+          <header class="mb-4">
+            <h1 class="mb-4 text-3xl font-extrabold text-center">
+              Nuestro Café
+            </h1>
+          </header>
+          <p class="text-justify">
+            En la Finca Bristol nos enorgullece presentarte nuestro café,
+            cultivado con pasión y cuidado en las fértiles tierras de nuestra
+            finca. Cada grano es seleccionado meticulosamente para garantizar la
+            más alta calidad en cada taza que disfrutas.
           </p>
-          <p class="text-gray-600 mb-4">
-            Nuestro café de finca se distingue por su sabor único y su calidad
-            excepcional. Cada taza es una experiencia sensorial que deleita a
-            los amantes del café más exigentes.
+          <p class="text-justify">
+            Nuestro café se distingue por su sabor excepcional, que fusiona
+            notas afrutadas y toques de cacao con una suavidad incomparable.
+            Este equilibrio perfecto es el resultado de años de experiencia y
+            dedicación por parte de nuestros agricultores, que trabajan en
+            armonía con la naturaleza para producir un producto que deleita los
+            sentidos.
           </p>
-          <p class="text-gray-600 mb-4">
-            Descubre el auténtico sabor de Bristol Koffee y déjate llevar por el
-            aroma y el sabor de nuestro café de finca.
+          <p class="text-justify">
+            Desde la cosecha hasta la tostión, cada etapa del proceso se lleva a
+            cabo con el mayor cuidado y atención al detalle. Esto nos permite
+            garantizar que cada taza de café que disfrutas refleje la excelencia
+            y el compromiso que nos caracteriza en la Finca Bristol.
           </p>
-        </div>
-        <!-- Imágenes -->
-        <div class="col-span-2 lg:col-span-1">
-          <div class="grid grid-cols-2 gap-4">
-            <div class="aspect-w-1 aspect-h-1">
+          <div class="flex justify-center">
+            <figure>
               <img
-                src="/images/coffee1.jpg"
-                alt="Café de Finca Bristol Koffee"
-                class="object-cover w-full h-full rounded-md"
+                src="https://res.cloudinary.com/dtmrroz8t/image/upload/v1714302872/pexels-photo-2067628_eygc87.webp"
+                alt="Café de Finca Bristol"
+                class="pt-4"
               />
-            </div>
-            <div class="aspect-w-1 aspect-h-1">
-              <img
-                src="/images/coffee2.jpg"
-                alt="Café de Finca Bristol Koffee"
-                class="object-cover w-full h-full rounded-md"
-              />
-            </div>
-            <!-- Agrega más imágenes aquí si es necesario -->
+              <figcaption class="pb-4">
+                Nuestro café: una experiencia única en cada taza
+              </figcaption>
+            </figure>
           </div>
-        </div>
+          <p class="text-justify">
+            El café de nuestra finca proviene de plantaciones ubicadas en las laderas de las montañas, donde el clima y el suelo proporcionan condiciones óptimas para el cultivo de granos de café de alta calidad. La combinación de altitud, temperatura y humedad crea un entorno único que influye en el sabor y aroma característicos de nuestro café, convirtiéndolo en una experiencia sensorial incomparable.
+          </p>
+        </article>
       </div>
-    </div>
+    </main>
   </section>
 </Layout>
