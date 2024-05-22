@@ -8,93 +8,181 @@ import Layout from "../layouts/Layout.astro";
     <section>
       <div class="relative">
         <div class="pt-12">
-        <div
-          class="absolute inset-0 -top-4 bg-fixed bg-center bg-cover bg-no-repeat filter grayscale blur-sm"
-          style="background-image: url('https://res.cloudinary.com/dtmrroz8t/image/upload/v1714293432/Bristol%20Koffee/bristol_logo_tmp_nouozw.png');"
-        >
+          <div
+            class="absolute inset-0 -top-4 bg-fixed bg-center bg-cover bg-no-repeat filter grayscale blur-sm"
+            style="background-image: url('https://res.cloudinary.com/dtmrroz8t/image/upload/v1714293432/Bristol%20Koffee/bristol_logo_tmp_nouozw.png');"
+          >
+          </div>
+          <div
+            class="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
+            <!-- Item 1 -->
+            <div
+              class="p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow"
+            >
+              <h3 class="text-xl font-semibold mb-4 text-center">Con café</h3>
+              <ol>
+                <li>Espresso</li>
+                <li>Cortado</li>
+                <li>Latte - XL - XXL</li>
+                <li>Americano - Filtro</li>
+                <li>Flat White</li>
+                <li>Capuccino</li>
+                <li>Capuccino Vainilla</li>
+                <li>Mokalatte</li>
+                <li class="text-xs">(Choco Blanco | Negro | Caramelo)</li>
+                <li>Bombón</li>
+              </ol>
+            </div>
+            <!-- Item 2 -->
+            <div
+              class="p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow"
+            >
+              <h3 class="text-xl font-semibold mb-4 text-center">Sin café</h3>
+              <ol class="mb-2">
+                <li>Matcha latte</li>
+                <li>Chai latte</li>
+                <li>Chai vainilla</li>
+                <li>Cúrcuma latte</li>
+                <li>Pink latte</li>
+                <li>Ice matcha</li>
+                <li>Ice latte</li>
+                <li>Té - Infusión</li>
+                <li>Té con leche</li>
+              </ol>
+            </div>
+            <!-- Item 3 -->
+            <div
+              class="p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow"
+            >
+              <h3 class="text-xl font-semibold mb-4 text-center">Zumos</h3>
+              <ol>
+                <li>Naranja natural</li>
+                <li>Naranja y matcha</li>
+                <li>Fresa, naranja y plátano</li>
+                <li>Piña, naranja y plátano</li>
+                <li>Fresa</li>
+                <li>Plátano</li>
+                <li>Mango</li>
+              </ol>
+            </div>
+            <!-- Item 4 -->
+            <div
+              class="p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow"
+            >
+              <h3 class="text-xl font-semibold mb-4 text-center">Limonada</h3>
+              <ol>
+                <li>Clásica</li>
+                <li>Chili Mango</li>
+                <li>Frutos Rojos</li>
+                <li>Fresa</li>
+              </ol>
+            </div>
+            <!-- Item 5 -->
+            <div
+              class="p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow"
+            >
+              <h3 class="text-xl font-semibold mb-4 text-center">Ice Tea</h3>
+              <ol>
+                <li>Té Chai</li>
+                <li>Té Frambuesa</li>
+                <li>Té Mango</li>
+                <li>Té Melocotón</li>
+                <li>Té Verde</li>
+              </ol>
+            </div>
+            <!-- Item 6 -->
+            <div
+              class="p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow"
+            >
+              <h3 class="text-xl font-semibold mb-4 text-center">Bubble Tea</h3>
+              <ol>
+                <li class="text-center text-sm">Haz tu mezcla favorita</li>
+                <br />
+                <div class="flex flex-row justify-between">
+                  <div>
+                    <li>Fresa</li>
+                    <li>Maracuyá</li>
+                    <li>Mango</li>
+                  </div>
+                  <div>
+                    <li>&nbsp;</li>
+                    <li>+</li>
+                    <li>&nbsp;</li>
+                  </div>
+                  <div>
+                    <li>Mango</li>
+                    <li>Frambuesa</li>
+                    <li>Té Verde</li>
+                  </div>
+                </div>
+              </ol>
+            </div>
+            <!-- Item 7 -->
+            <div
+              class="p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow"
+            >
+              <h3 class="text-xl font-semibold mb-4 text-center">Frappes</h3>
+              <ol>
+                <li>Frappé Café</li>
+                <li>Frappé café con</li>
+                <li class="text-xs">chocolate | blanco | caramelo</li>
+                <li>Frappé sin café</li>
+                <li class="text-xs">
+                  oreo | kinder | lotus | avellana | vainilla | chocolate |
+                  lotus | caramelo
+                </li>
+                <li></li>
+              </ol>
+            </div>
+          </div>
         </div>
-        <div
-          class="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-        >
-          <!-- Item 1 -->
+      </div>
+    </section>
+    <!-- Té && Infusiones -->
+    <section>
+      <div class="relative">
+        <div class="pt-12">
           <div
-            class="p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow"
+            class="relative z-10 grid grid-cols-1 gap-8"
           >
-            <h3 class="text-xl font-semibold mb-4 text-center">Con café</h3>
-            <ol>
-              <li>Espresso</li>
-              <li>Cortado</li>
-              <li>Latte - XL - XXL</li>
-              <li>Americano - Filtro</li>
-              <li>Flat White</li>
-              <li>Capuccino</li>
-              <li>Capuccino Vainilla</li>
-              <li>Mokalatte</li>
-              <li class="text-xs">(Choco Blanco | Negro | Caramelo)</li>
-              <li>Bombón</li>
-            </ol>
-          </div>
-          <!-- Item 2 -->
-          <div
-            class="p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow"
-          >
-            <h3 class="text-xl font-semibold mb-4 text-center">Sin café</h3>
-            <ol class="mb-2">
-              <li>Matcha latte</li>
-              <li>Chai latte</li>
-              <li>Chai vainilla</li>
-              <li>Cúrcuma latte</li>
-              <li>Pink latte</li>
-              <li>Ice matcha</li>
-              <li>Ice latte</li>
-              <li>Té - Infusión</li>
-              <li>Té con leche</li>
-            </ol>
-          </div>
-          <!-- Item 3 -->
-          <div
-            class="p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow"
-          >
-            <h3 class="text-xl font-semibold mb-4 text-center">Capuchino</h3>
-            <ol>
-              <li>Naranja natural</li>
-              <li>Naranja y matcha</li>
-              <li>Fresa, naranja y plátano</li>
-              <li>Piña, naranja y plátano</li>
-              <li>Fresa</li>
-              <li>Plátano</li>
-              <li>Mango</li>
-            </ol>
-          </div>
-          <!-- Item 4 -->
-          <div
-            class="p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow"
-          >
-            <h3 class="text-xl font-semibold mb-4 text-center">Capuchino</h3>
-            <ol>
-              <li>Naranja natural</li>
-              <li>Naranja y matcha</li>
-              <li>Fresa, naranja y plátano</li>
-              <li>Piña, naranja y plátano</li>
-              <li>Fresa</li>
-              <li>Plátano</li>
-              <li>Mango</li>
-            </ol>
-          </div>
-          <!-- Item 5 -->
-          <div
-            class="p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow"
-          >
-            <h3 class="text-xl font-semibold mb-4 text-center">Capuchino</h3>
-            <ol>
-              <li>Naranja natural</li>
-              <li>Naranja y matcha</li>
-              <li>Fresa, naranja y plátano</li>
-              <li>Piña, naranja y plátano</li>
-              <li>Fresa</li>
-              <li>Plátano</li>
-              <li>Mango</li>
-            </ol>
+            <div
+              class="p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow"
+            >
+              <h3 class="text-xl font-semibold mb-4 text-center">Té</h3>
+              <ol class="list-inside">
+                <li>
+                  <table class="mx-auto">
+                    <tr>
+                      <td class="w-32 pr-2">Té negro:&nbsp;&nbsp;&nbsp;</td>
+                      <td
+                        >Energía: Hierbas on mate, hibisco, arándanos rojos y té
+                        negro.</td
+                      >
+                    </tr>
+                  </table>
+                </li>
+                <li>
+                  <table class="mx-auto">
+                    <tr>
+                      <td class="w-32 pr-2">&nbsp;</td>
+                      <td
+                        >Energía: Hierbas on mate, hibisco, arándanos rojos y té
+                        negro.</td
+                      >
+                    </tr>
+                  </table>
+                </li>
+              </ol>
+            </div>
+
+            <!-- Infusiones -->
+            <div
+              class="p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow"
+            >
+              <h3 class="text-xl font-semibold mb-4 text-center">Té</h3>
+              <ol></ol>
+            </div>
           </div>
         </div>
       </div>
