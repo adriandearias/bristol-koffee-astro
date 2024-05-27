@@ -1,24 +1,80 @@
 ---
-import { getGoogleReviews } from "../reviews.js";
+const reviews = [
+  {
+    author_name: "John Doe",
+    text: "Great coffee and excellent service!",
+    rating: 5,
+  },
+  {
+    author_name: "Jane Smith",
+    text: "Cozy place with a friendly atmosphere.",
+    rating: 4,
+  },
+  {
+    author_name: "Alice Johnson",
+    text: "The pastries are amazing!",
+    rating: 5,
+  },
+  {
+    author_name: "Chris Evans",
+    text: "Loved the latte art.",
+    rating: 5,
+  },
+  {
+    author_name: "Emma Watson",
+    text: "A perfect spot for remote work.",
+    rating: 4,
+  },
+  {
+    author_name: "Robert Downey",
+    text: "Good place to relax and have a good coffee.",
+    rating: 4,
+  },
+  {
+    author_name: "Natalie Portman",
+    text: "Great selection of teas too.",
+    rating: 5,
+  },
+];
 
-const reviews = await getGoogleReviews();
+let currentIndex = -1; // Inicializando currentIndex en -1
+const reviewsCount = reviews.length;
+
+function nextReview() {
+  currentIndex = (currentIndex + 1) % reviewsCount;
+}
+
+function prevReview() {
+  currentIndex = (currentIndex - 1 + reviewsCount) % reviewsCount;
+}
 ---
 
-<div class="mx-auto flex flex-col items-center pb-20">
-  <h2>Reseñas de Google</h2>
-  {
-    reviews.length > 0 ? (
-      <ul>
-        {reviews.map((review) => (
-          <li key={review.author_name}>
-            <h3>{review.author_name}</h3>
-            <p>{review.text}</p>
-            <p>Rating: {review.rating}</p>
-          </li>
-        ))}
-      </ul>
-    ) : (
-      <p>No hay reseñas disponibles.</p>
-    )
-  }
+<div class="max-w-screen-lg mx-auto pb-20">
+  <h2 class="text-2xl font-bold text-center mb-5">Reseñas de Google</h2>
+  <div class="relative overflow-hidden">
+    <div class="review-container flex space-x-4 p-4">
+      {
+        reviews.map((review, index) => (
+          <div
+            :key={index}
+            class={`bg-white shadow-md rounded-lg p-4 min-w-[300px] ${currentIndex === index ? "" : "hidden"}`}
+          >
+            <h3 class="text-lg font-semibold">{review.author_name}</h3>
+            <p class="text-sm">{review.text}</p>
+            <p class="text-yellow-500">Rating: {review.rating} ⭐</p>
+          </div>
+        ))
+      }
+    </div>
+    <button
+      :onclick={prevReview}
+      class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"
+      >◀</button
+    >
+    <button
+      :onclick={nextReview}
+      class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"
+      >▶</button
+    >
+  </div>
 </div>
