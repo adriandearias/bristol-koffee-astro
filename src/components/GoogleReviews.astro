@@ -1,80 +1,141 @@
 ---
 const reviews = [
   {
-    author_name: "John Doe",
-    text: "Great coffee and excellent service!",
+    author_name: "Elena Carmona Rodríguez",
+    text: "Por fin una buena cafetería en Viladecans!!! Café de especialidad buenísimo, también probé la limonada casera, súper rica!!! Tienen tanto opciones dulces como saladas, sin duda un buen sitio para desayunar o merendar. ¡100% recomendable!",
     rating: 5,
+    url: "https://maps.app.goo.gl/gCwTXdsryFo9dmD16",
+    photo_url:
+      "https://res.cloudinary.com/dtmrroz8t/image/upload/v1716882727/Bristol%20Koffee/rv1-min_arja6y.jpg",
   },
   {
-    author_name: "Jane Smith",
-    text: "Cozy place with a friendly atmosphere.",
-    rating: 4,
-  },
-  {
-    author_name: "Alice Johnson",
-    text: "The pastries are amazing!",
+    author_name: "Sonia L.",
+    text: "Me encanta, os deseo lo mejor y gracias por el café de especialidad 🙂…",
     rating: 5,
+    url: "https://maps.app.goo.gl/BZRD1jTayF41s1D18",
   },
   {
-    author_name: "Chris Evans",
-    text: "Loved the latte art.",
+    author_name: "Alexandre Arasa",
+    text: "La calidad del café y la atención son espectaculares. Por no hablar de los Cinnamon Rolls y las galletas que están buenísimas. Yo creo que es la única cafetería para los amantes del café en Viladecans. Volveremos sin dudarlo.",
     rating: 5,
+    url: "https://maps.app.goo.gl/3gZvFJiVu945VZuk7",
+    photo_url:
+      "https://res.cloudinary.com/dtmrroz8t/image/upload/v1716888686/Bristol%20Koffee/bristolKoffee_review2_msuojv.jpg",
   },
   {
-    author_name: "Emma Watson",
-    text: "A perfect spot for remote work.",
-    rating: 4,
-  },
-  {
-    author_name: "Robert Downey",
-    text: "Good place to relax and have a good coffee.",
-    rating: 4,
-  },
-  {
-    author_name: "Natalie Portman",
-    text: "Great selection of teas too.",
+    author_name: "Dámaris TL",
+    text: "Me ha encantado ir! El trato y el servicio excelente, la atención rápida y las chicas son muy amables y atentas. El local es muy chulo, moderno y con personalidad. Se respira muy buen ambiente familiar. Puedes tomar dentro o fuera, que también hay varias mesas. El café es de especialidad, muy buena calidad y riquísimo! Y que decir de la comida, tanto las tostadas, que me pedí dos, a cual más rica! Y la bollería, pastas, se nota que son de calidad y muy ricas. Volveremos más de una vez!!",
     rating: 5,
+    url: "https://maps.app.goo.gl/u9YgiqRF4sphBaMw7",
+    photo_url:
+      "https://res.cloudinary.com/dtmrroz8t/image/upload/v1716888686/Bristol%20Koffee/bristolKoffee_review3_ckq7ip.jpg",
+  },
+  {
+    author_name: "Marta Sandoval Flores",
+    text: "La mejor cafetería en la zona de Viladecans. Buen cafe y amplía carta de zumos y tes. Por no hablar de la parte dulce 🤤. Sin duda volveremos.",
+    rating: 5,
+    url: "https://maps.app.goo.gl/Ytd1G6t2u4BJnyF46",
+    photo_url:
+      "https://res.cloudinary.com/dtmrroz8t/image/upload/v1716888686/Bristol%20Koffee/bristolKoffee_review4_cw1rch.jpg",
+  },
+  {
+    author_name: "Mariona Manchon Quesada",
+    text: "Un lugar precioso, una atención perfecta y la comida buenísima!!",
+    rating: 5,
+    url: "https://maps.app.goo.gl/exn9G2SGno4P2x428",
+  },
+  {
+    author_name: "Alicia Vinader",
+    text: "Ya era hora que abriese en Viladecans una cafetería con café y productos de los buenos. Tienen unas tostadas y unas pastas súper ricas también! La atención es de 10! Nuevo sitio donde merendar🤭",
+    rating: 5,
+    url: "https://maps.app.goo.gl/jxtVgHbyjxKGQngy5",
+    photo_url:
+      "https://res.cloudinary.com/dtmrroz8t/image/upload/v1716888686/Bristol%20Koffee/bristolKoffee_review5_kvr8qm.jpg",
+  },
+  {
+    author_name: "Juan Lopez",
+    text: "Por fin una cafetería en la Rambla con personalidad y muy buena calidad que se sale de lo común. El café buenísimo. Enhorabuena de verdad",
+    rating: 5,
+    url: "https://maps.app.goo.gl/YJhpx1JS7aPcz79i7",
+  },
+  {
+    author_name: "Laia Juarez",
+    text: "Cafetería dónde te puedes tomar un buen café. La atención ha sido rápida y las chicas son muy amables.",
+    rating: 5,
+    url: "https://maps.app.goo.gl/h8Pqw9NPjxVwJ84A9",
+    photo_url:
+      "https://res.cloudinary.com/dtmrroz8t/image/upload/v1716888687/Bristol%20Koffee/bristolKoffee_review6_gaoicp.jpg",
   },
 ];
 
-let currentIndex = -1; // Inicializando currentIndex en -1
-const reviewsCount = reviews.length;
-
-function nextReview() {
-  currentIndex = (currentIndex + 1) % reviewsCount;
-}
-
-function prevReview() {
-  currentIndex = (currentIndex - 1 + reviewsCount) % reviewsCount;
-}
+const getStars = (rating) => "☕".repeat(rating);
+const defaultUrl =
+  "https://www.google.com/maps/place/Bristol+Koffee/@41.3183674,2.014206,17z/data=!4m18!1m9!3m8!1s0x12a49d030d2590b3:0xc67c03e6629e45f3!2sBristol+Koffee!8m2!3d41.3183635!4d2.0190769!9m1!1b1!16s%2Fg%2F11vwf4grhc!3m7!1s0x12a49d030d2590b3:0xc67c03e6629e45f3!8m2!3d41.3183635!4d2.0190769!9m1!1b1!16s%2Fg%2F11vwf4grhc?entry=ttu";
 ---
 
-<div class="max-w-screen-lg mx-auto pb-20">
-  <h2 class="text-2xl font-bold text-center mb-5">Reseñas de Google</h2>
-  <div class="relative overflow-hidden">
-    <div class="review-container flex space-x-4 p-4">
-      {
-        reviews.map((review, index) => (
-          <div
-            :key={index}
-            class={`bg-white shadow-md rounded-lg p-4 min-w-[300px] ${currentIndex === index ? "" : "hidden"}`}
-          >
-            <h3 class="text-lg font-semibold">{review.author_name}</h3>
-            <p class="text-sm">{review.text}</p>
-            <p class="text-yellow-500">Rating: {review.rating} ⭐</p>
+<div class="container mx-auto max-w-screen-lg pb-20">
+  <h1 class="text-4xl font-semibold mb-6 text-center">
+    ¿Qué dicen nuestros clientes?
+  </h1>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-sm">
+    {
+      reviews.map((review) => (
+        <a
+          href={review.url || defaultUrl}
+          class="bg-white shadow-md rounded-lg p-6 transition-colors duration-300 hover:bg-customYellow"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="flex items-center mb-4">
+            <div class="w-12 h-12 bg-gray-300 rounded-full flex items-center justify-center text-xl font-semibold text-gray-600">
+              {review.author_name.charAt(0)}
+            </div>
+            <div class="ml-4">
+              <h2 class="text-lg font-semibold">{review.author_name}</h2>
+              <p class="text-gray-600">{getStars(review.rating)}</p>
+            </div>
           </div>
-        ))
-      }
-    </div>
-    <button
-      :onclick={prevReview}
-      class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"
-      >◀</button
+          {review.photo_url && (
+            <img
+              src={review.photo_url}
+              alt={`${review.author_name}'s review`}
+              class="w-full h-32 object-cover mb-4 rounded"
+            />
+          )}
+          <p class="text-gray-800 mb-4">{review.text}</p>
+        </a>
+      ))
+    }
+  </div>
+  <div class="pt-10 mx-auto text-center">
+    <a
+      href={defaultUrl}
+      target="_blank"
+      class="flex items-center justify-center text-blue-500 hover:underline p-5 hover:text-customYellow"
     >
-    <button
-      :onclick={nextReview}
-      class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"
-      >▶</button
-    >
+      Ver más reseñas en Google
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        version="1.1"
+        width="25"
+        height="25"
+        viewBox="0 0 256 256"
+        xml:space="preserve"
+        class="ml-2"
+      >
+        <defs></defs>
+        <g
+          style="stroke: none; stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: none; fill-rule: nonzero; opacity: 1;"
+          transform="translate(1.4065934065934016 1.4065934065934016) scale(2.81 2.81)"
+        >
+          <path
+            d="M 89.149 43.644 L 30.968 15.53 c -0.918 -0.443 -1.983 0.225 -1.983 1.244 v 19.946 H 1.561 C 0.699 36.721 0 37.42 0 38.282 v 13.435 c 0 0.862 0.699 1.561 1.561 1.561 h 27.423 v 19.947 c 0 1.019 1.066 1.688 1.983 1.244 l 58.181 -28.114 C 90.284 45.808 90.284 44.192 89.149 43.644 z"
+            style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-linejoin: miter; stroke-miterlimit: 10; fill: rgb(255,195,26); fill-rule: nonzero; opacity: 1;"
+            transform=" matrix(1 0 0 1 0 0) "
+            stroke-linecap="round"></path>
+        </g>
+      </svg>
+    </a>
   </div>
 </div>
