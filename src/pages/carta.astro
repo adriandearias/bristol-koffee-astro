@@ -1,222 +1,190 @@
 ---
 import Layout from "../layouts/Layout.astro";
----
 
+const menuSections = [
+  {
+    title: "Con café",
+    items: [
+      "Espresso",
+      "Cortado",
+      "Latte - XL - XXL",
+      "Americano - Filtro",
+      "Flat White",
+      "Capuccino",
+      "Capuccino Vainilla",
+      "Mokalatte",
+      { text: "(Choco Blanco | Negro | Caramelo)", className: "text-xs" },
+      "Bombón"
+    ]
+  },
+  {
+    title: "Sin café",
+    items: [
+      "Matcha latte",
+      "Chai latte",
+      "Chai vainilla",
+      "Cúrcuma latte",
+      "Pink latte",
+      "Ice matcha",
+      "Ice latte",
+      "Té - Infusión",
+      "Té con leche"
+    ]
+  },
+  {
+    title: "Zumos",
+    items: [
+      "Naranja natural",
+      "Naranja y matcha",
+      "Fresa, naranja y plátano",
+      "Piña, naranja y plátano",
+      "Fresa",
+      "Plátano",
+      "Mango"
+    ]
+  },
+  {
+    title: "Limonada",
+    items: [
+      "Clásica",
+      "Chili Mango",
+      "Frutos Rojos",
+      "Fresa"
+    ]
+  },
+  {
+    title: "Ice Tea",
+    items: [
+      "Té Chai",
+      "Té Frambuesa",
+      "Té Mango",
+      "Té Melocotón",
+      "Té Verde"
+    ]
+  },
+  {
+    title: "Bubble Tea",
+    items: [
+      { text: "Haz tu mezcla favorita", className: "text-center text-sm" },
+      "",
+      { text: "Fresa", className: "flex-1" },
+      { text: "Maracuyá", className: "flex-1" },
+      { text: "Mango", className: "flex-1" },
+      "+",
+      { text: "Mango", className: "flex-1" },
+      { text: "Frambuesa", className: "flex-1" },
+      { text: "Té Verde", className: "flex-1" }
+    ]
+  },
+  {
+    title: "Frappes",
+    items: [
+      "Frappé Café",
+      "Frappé café con",
+      { text: "chocolate | blanco | caramelo", className: "text-xs" },
+      "Frappé sin café",
+      { text: "oreo | kinder | lotus | avellana | vainilla | chocolate | lotus | caramelo", className: "text-xs" }
+    ]
+  }
+];
+
+const teaSections = [
+  {
+    title: "Té",
+    items: [
+      { type: "Té negro", details: ["Energía: Hierbas con mate, hibisco, arándanos rojos y té negro.", "Chai negro: Especias, jengibre, canela y té negro."] },
+      { type: "Té verde", details: ["Matcha, citronella, limón.", "Harmonía: Té verde con hierba de limón y hierba piperita."] },
+      { type: "Té blanco", details: ["Aloe vera, albahaca, cúrcuma y flores de manzanilla."] },
+      { type: "Té rojo", details: ["Pu erh."] }
+    ]
+  },
+  {
+    title: "Infusiones",
+    items: [
+      "Felicidad: Hierbas, canela, lúpulo, cáscara de naranja.",
+      "Calma: Hierbas, flores de tila, manzanilla, rosa canina.",
+      "Himalaya: Especias, jengibre, hinojo y canela.",
+      "Jengibre al limón: Jengibre, cáscara de limón y menta piperita.",
+      "Equilibrio: Hierbas con hojas de frambuesa, hierba luisa y flores lavanda.",
+      "Detox con limón: Hierbas con diente de león, regaliz y cáscara de limón.",
+      "Digestión: Hierbas con cardamomo, hinojo y jengibre.",
+      "Alegría: Hierbas con albahaca, cáscara de naranja y chile.",
+      "Defensas: Hierbas con equinacea, acerola, bayas de saúco.",
+      "Classic: Especias con canela, cardamomo y jengibre.",
+      "Choco: Especias, cáscara de cacao, regaliz y canela.",
+      "Chai Cúrcuma: Especias, cúrcuma, canela y jengibre.",
+      "Rooibos Vainilla: Rooibos, flores de manzanilla y vainilla.",
+      "Rooibos: Especias con rooibos, canela y clavo."
+    ]
+  }
+];
+
+// Función para generar HTML de una sección del menú
+function generateMenuSection(title, items) {
+  return `
+    <div class="p-4 sm:p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow">
+      <h3 class="text-lg sm:text-xl font-semibold mb-4 text-center">${title}</h3>
+      <ol class="mb-2">
+        ${items.map(item => typeof item === 'string' ? `<li>${item}</li>` : `<li class="${item.className}">${item.text}</li>`).join('')}
+      </ol>
+    </div>
+  `;
+}
+
+// Función para generar HTML de una sección de té
+function generateTeaSection(title, items) {
+  return `
+    <div class="p-4 sm:p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow">
+      <h3 class="text-lg sm:text-xl font-semibold mb-4 text-center">${title}</h3>
+      ${items.map(item => `
+        <div class="grid grid-cols-1 sm:grid-cols-2 mx-8 sm:mx-32">
+          <div>${item.type}:</div>
+          <div>${item.details.map(detail => `<p>- ${detail}</p>`).join('')}</div>
+        </div>
+      `).join('')}
+    </div>
+  `;
+}
+
+// Función para generar HTML de la sección de infusiones
+function generateInfusionsSection(title, items) {
+  return `
+    <div class="p-4 sm:p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow">
+      <h3 class="text-lg sm:text-xl font-semibold mb-4 text-center">${title}</h3>
+      <div class="px-8 sm:px-32">
+        <ol>
+          ${items.map(item => {
+            const [name, description] = item.split(': ');
+            return `<li><span class="font-bold">${name}:&nbsp;&nbsp;&nbsp;&nbsp;</span>${description}</li>`;
+          }).join('')}
+        </ol>
+      </div>
+    </div>
+  `;
+}
+
+---
 <Layout title="Bristol Koffee - Carta">
-  <div class="container mx-auto max-w-screen-lg py-8">
-    <h2 class="text-3xl font-semibold mb-8 text-center">Nuestra Carta</h2>
+  <div class="container mx-auto max-w-screen-lg py-4 sm:py-8">
+    <h2 class="text-2xl sm:text-3xl font-semibold mb-4 sm:mb-8 text-center">Nuestra Carta</h2>
     <section>
       <div class="relative">
-        <div class="pt-12">
-          <div
-            class="absolute inset-0 -top-4 bg-fixed bg-center bg-cover bg-no-repeat filter grayscale blur-sm"
-            style="background-image: url('https://res.cloudinary.com/dtmrroz8t/image/upload/v1714293432/Bristol%20Koffee/bristol_logo_tmp_nouozw.png');"
-          >
-          </div>
-          <div
-            class="relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            <!-- Item 1 -->
-            <div
-              class="p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow"
-            >
-              <h3 class="text-xl font-semibold mb-4 text-center">Con café</h3>
-              <ol>
-                <li>Espresso</li>
-                <li>Cortado</li>
-                <li>Latte - XL - XXL</li>
-                <li>Americano - Filtro</li>
-                <li>Flat White</li>
-                <li>Capuccino</li>
-                <li>Capuccino Vainilla</li>
-                <li>Mokalatte</li>
-                <li class="text-xs">(Choco Blanco | Negro | Caramelo)</li>
-                <li>Bombón</li>
-              </ol>
-            </div>
-            <!-- Item 2 -->
-            <div
-              class="p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow"
-            >
-              <h3 class="text-xl font-semibold mb-4 text-center">Sin café</h3>
-              <ol class="mb-2">
-                <li>Matcha latte</li>
-                <li>Chai latte</li>
-                <li>Chai vainilla</li>
-                <li>Cúrcuma latte</li>
-                <li>Pink latte</li>
-                <li>Ice matcha</li>
-                <li>Ice latte</li>
-                <li>Té - Infusión</li>
-                <li>Té con leche</li>
-              </ol>
-            </div>
-            <!-- Item 3 -->
-            <div
-              class="p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow"
-            >
-              <h3 class="text-xl font-semibold mb-4 text-center">Zumos</h3>
-              <ol>
-                <li>Naranja natural</li>
-                <li>Naranja y matcha</li>
-                <li>Fresa, naranja y plátano</li>
-                <li>Piña, naranja y plátano</li>
-                <li>Fresa</li>
-                <li>Plátano</li>
-                <li>Mango</li>
-              </ol>
-            </div>
-            <!-- Item 4 -->
-            <div
-              class="p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow"
-            >
-              <h3 class="text-xl font-semibold mb-4 text-center">Limonada</h3>
-              <ol>
-                <li>Clásica</li>
-                <li>Chili Mango</li>
-                <li>Frutos Rojos</li>
-                <li>Fresa</li>
-              </ol>
-            </div>
-            <!-- Item 5 -->
-            <div
-              class="p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow"
-            >
-              <h3 class="text-xl font-semibold mb-4 text-center">Ice Tea</h3>
-              <ol>
-                <li>Té Chai</li>
-                <li>Té Frambuesa</li>
-                <li>Té Mango</li>
-                <li>Té Melocotón</li>
-                <li>Té Verde</li>
-              </ol>
-            </div>
-            <!-- Item 6 -->
-            <div
-              class="p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow"
-            >
-              <h3 class="text-xl font-semibold mb-4 text-center">Bubble Tea</h3>
-              <ol>
-                <li class="text-center text-sm">Haz tu mezcla favorita</li>
-                <br />
-                <div class="flex flex-row justify-between">
-                  <div>
-                    <li>Fresa</li>
-                    <li>Maracuyá</li>
-                    <li>Mango</li>
-                  </div>
-                  <div>
-                    <li>&nbsp;</li>
-                    <li>+</li>
-                    <li>&nbsp;</li>
-                  </div>
-                  <div>
-                    <li>Mango</li>
-                    <li>Frambuesa</li>
-                    <li>Té Verde</li>
-                  </div>
-                </div>
-              </ol>
-            </div>
-            <!-- Item 7 -->
-            <div
-              class="p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow"
-            >
-              <h3 class="text-xl font-semibold mb-4 text-center">Frappes</h3>
-              <ol>
-                <li>Frappé Café</li>
-                <li>Frappé café con</li>
-                <li class="text-xs">chocolate | blanco | caramelo</li>
-                <li>Frappé sin café</li>
-                <li class="text-xs">
-                  oreo | kinder | lotus | avellana | vainilla | chocolate |
-                  lotus | caramelo
-                </li>
-                <li></li>
-              </ol>
-            </div>
+        <div class="pt-4 sm:pt-12">
+          <div class="absolute inset-0 -top-2 sm:-top-4 bg-fixed bg-center bg-cover bg-no-repeat filter grayscale blur-sm" style="background-image: url('https://res.cloudinary.com/dtmrroz8t/image/upload/v1714293432/Bristol%20Koffee/bristol_logo_tmp_nouozw.png');"></div>
+          <div class="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
+            {menuSections.map(section => generateMenuSection(section.title, section.items))}
           </div>
         </div>
       </div>
     </section>
-    <!-- Té && Infusiones -->
     <section>
       <div class="relative">
-        <div class="pt-12">
-          <div class="relative z-10 grid grid-cols-1 gap-8">
-            <div
-              class="p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow"
-            >
-              <h3 class="text-xl font-semibold mb-4 text-center">Té</h3>
-              <div class="grid grid-cols-2 mx-32">
-                <div>Té negro:</div>
-                <div>
-                  <p>
-                    - Energía: Hierbas on mate, hibisco, arándanos rojos y té
-                    negro.
-                  </p>
-                  <p>
-                    - Chai negro: Especias, jengibre, canela y té negro.
-                  </p>
-                </div>
-              </div>
-              <br>
-              <div class="grid grid-cols-2 mx-32">
-                <div>Té verde:</div>
-                <div>
-                  <p>
-                    - Matcha, citronella, limón.
-                  </p>
-                  <p>
-                    - Harmonía: Té verde con hierba de limón y hierba piperita.
-                  </p>
-                </div>
-              </div>
-              <br>
-              <div class="grid grid-cols-2 mx-32">
-                <div>Té blanco:</div>
-                <div>
-                  <p>
-                    - Aloe vera, albahaca, cúrcuma y flores de manzanilla.
-                  </p>
-                </div>
-              </div>
-              <br>
-              <div class="grid grid-cols-2 mx-32">
-                <div>Té rojo:</div>
-                <div>
-                  <p>
-                    - Pu erh.
-                  </p>
-                </div>
-              </div>
-          </div>
-          <!-- Infusiones -->
-          <div
-          class="p-6 bg-customGray bg-opacity-85 rounded shadow-md border-y-8 border-customYellow"
-        >
-          <h3 class="text-xl font-semibold mb-4 text-center">Infusiones</h3>
-          <div class="px-32">
-            <ol>
-              <li><span class="font-bold">Felicidad: &nbsp;&nbsp;&nbsp;&nbsp;</span>Hierbas, canela, lúpulo, cáscara de naranja.</li>
-              <li><span class="font-bold">Calma: &nbsp;&nbsp;&nbsp;&nbsp;</span>Hierbas, flores de tila, manzanilla, rosa canina.</li>
-              <li><span class="font-bold">Himalaya: &nbsp;&nbsp;&nbsp;&nbsp;</span>Especias, jengibre, hinojo y canela.</li>
-              <li><span class="font-bold">Jengibre al limón: &nbsp;&nbsp;&nbsp;&nbsp;</span>Jengibre, cáscara de limón y menta piperita.</li>
-              <li><span class="font-bold">Equilibrio: &nbsp;&nbsp;&nbsp;&nbsp;</span>Hierbas con hojas de frambuesa, hierba luisa y flores lavanda.</li>
-              <li><span class="font-bold">Detox con limón: &nbsp;&nbsp;&nbsp;&nbsp;</span>Hierbas con diente de león, regaliz y cáscara de limón.</li>
-              <li><span class="font-bold">Digestión: &nbsp;&nbsp;&nbsp;&nbsp;</span>Hierbas con cardamomo, hinojo y genjibre.</li>
-              <li><span class="font-bold">Alegría: &nbsp;&nbsp;&nbsp;&nbsp;</span>Hierbas con albahaca, cáscara de naranja y chile.</li>
-              <li><span class="font-bold">Defensas: &nbsp;&nbsp;&nbsp;&nbsp;</span>Hierbas con equinacea, acerola, bayas de saúco.</li>
-              <li><span class="font-bold">Classic: &nbsp;&nbsp;&nbsp;&nbsp;</span>Especias con canela, cardamomo y jengibre.</li>
-              <li><span class="font-bold">Choco: &nbsp;&nbsp;&nbsp;&nbsp;</span>Especias, cáscara de cacao, regaliz y canela.</li>
-              <li><span class="font-bold">Chai Cúrcuma: &nbsp;&nbsp;&nbsp;&nbsp;</span>Especias, cúrcuma, canela y jengibre.</li>
-              <li><span class="font-bold">Rooibos Vainilla: &nbsp;&nbsp;&nbsp;&nbsp;</span>Rooibos, flores de manzanilla y vainilla.</li>
-              <li><span class="font-bold">Rooibos: &nbsp;&nbsp;&nbsp;&nbsp;</span>Especias con rooibos, canela y clavo.</li>
-            </ol>
+        <div class="pt-4 sm:pt-12">
+          <div class="relative z-10 grid grid-cols-1 gap-4 sm:gap-8">
+            {teaSections.length >= 2 && generateInfusionsSection("Infusiones", teaSections[1].items)}
+            {generateInfusionsSection("Infusiones", teaSections[1].items)}
           </div>
         </div>
-        </div>
-      </div>
       </div>
     </section>
   </div>
