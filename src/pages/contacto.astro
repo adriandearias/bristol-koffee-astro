@@ -1,8 +1,85 @@
 ---
 import Layout from "../layouts/Layout.astro";
+export interface ContactFormProps {
+  onSubmit: (formData: {
+    name: string;
+    email: string;
+    subject: string;
+    message: string;
+  }) => void;
+}
 ---
 
-<Layout title="Bristol Koffee - Contacto">
-
-</Layout
->
+<Layout title="Bristol Koffee - Sobre Nosotros">
+  <h2 class="text-3xl sm:text-3xl font-extrabold mb-4 sm:mb-8 text-center pt-8">
+    Contacto
+  </h2>
+  <form
+    class="p-8 rounded-lg shadow-md w-full max-w-lg mx-auto"
+    on:submit|preventDefault={(e) => {
+      const formData = new FormData(e.target);
+      const name = formData.get("name") as string;
+      const email = formData.get("email") as string;
+      const subject = formData.get("subject") as string;
+      const message = formData.get("message") as string;
+      onSubmit({ name, email, subject, message });
+    }}
+  >
+    <div class="mb-4">
+      <label class="block text-customBlack text-sm font-bold mb-2" for="name">
+        Nombre
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-customBlack leading-tight focus:outline focus:shadow-outline bg-white dark:bg-customWhite"
+        id="name"
+        type="text"
+        name="name"
+        required
+      />
+    </div>
+    <div class="mb-4">
+      <label class="block text-customBlack text-sm font-bold mb-2" for="email">
+        Correo Electrónico
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-customBlack leading-tight focus:outline focus:shadow-outline bg-white dark:bg-customWhite"
+        id="email"
+        type="email"
+        name="email"
+        required
+      />
+    </div>
+    <div class="mb-4">
+      <label class="block text-customBlack text-sm font-bold mb-2" for="subject">
+        Asunto
+      </label>
+      <input
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-customBlack leading-tight focus:outline focus:shadow-outline bg-white dark:bg-customWhite"
+        id="subject"
+        type="text"
+        name="subject"
+        required
+      />
+    </div>
+    <div class="mb-4">
+      <label class="block text-customBlack text-sm font-bold mb-2" for="message">
+        Mensaje
+      </label>
+      <textarea
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 dark:text-customBlack leading-tight focus:outline focus:shadow-outline bg-white dark:bg-customWhite"
+        id="message"
+        name="message"
+        rows="5"
+        required
+      ></textarea>
+    </div>
+    <div class="flex items-center justify-between">
+      <button
+        class="font-bold py-2 px-4 rounded focus:outline focus:shadow-outline border hover:shadow-customBlack hover:bg-customYellow"
+        type="submit"
+      >
+        Enviar
+      </button>
+    </div>
+  </form>
+</Layout>
