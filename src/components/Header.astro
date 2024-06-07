@@ -1,35 +1,116 @@
 ---
 import Nav from "../components/Nav.astro";
 ---
+
 <header
-  class="sticky top-0 z-50 bg-customGray w-full px-56 py-1 flex justify-between items-center rounded-b-lg shadow-md"
-  style="position: sticky;"
+  class="sticky top-0 z-50 bg-customGray w-full lg:px-64 px-4 sm:px-8 py-1 flex justify-between items-center rounded-b-lg shadow-md"
 >
-  <img
-    class="rounded-full w-20 h-20 static"
-    src="https://res.cloudinary.com/dtmrroz8t/image/upload/v1714293432/Bristol%20Koffee/bristol_logo_tmp_nouozw.png"
-    alt="bristol logo"
+  <div class="flex justify-center items-center relative w-full sm:w-auto">
+    <img
+      class="rounded-full w-20 h-20 static"
+      src="https://res.cloudinary.com/dtmrroz8t/image/upload/v1714293432/Bristol%20Koffee/bristol_logo_tmp_nouozw.png"
+      alt="bristol logo"
+    />
+
+    <button
+      id="menuToggle"
+      data-dropdown-toggle="dropdown"
+      class="block sm:hidden bg-customGray text-center ml-auto focus:outline-none text-customwhit focus:ring-4 font-medium rounded-lg text-sm px-3 py-2.5 items-center"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-6 w-6"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16m-7 6h7"></path>
+      </svg>
+    </button>
+    <!-- Dropdown menu -->
+    <div
+      id="dropdown"
+      class="hidden text-center absolute z-10 bg-customGray divide-y divide-gray-100 rounded-lg shadow w-full sm:w-auto dark:bg-gray-700 mt-2 right-0 top-full"
+    >
+      <ul
+        class="py-4 text-xl font-bold text-gray-700 dark:text-gray-200"
+        aria-labelledby="menuToggle"
+      >
+        <li class="w-full hover:bg-customYellow py-4">
+          <a
+            href="/"
+            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+            >Inicio</a
+          >
+        </li>
+        <li class="w-full hover:bg-customYellow py-4">
+          <a
+            href="/carta"
+            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+            >Carta</a
+          >
+        </li>
+        <li class="w-full hover:bg-customYellow py-4">
+          <a
+            href="/sobrenosotros"
+            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+            >Sobre Nosotros</a
+          >
+        </li>
+        <li class="w-full hover:bg-customYellow py-4">
+          <a
+            href="/cafe"
+            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+            >Nuestro Café</a
+          >
+        </li>
+        <li class="w-full hover:bg-customYellow py-4">
+          <a
+            href="/contacto"
+            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+            >Contacto</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- Incluye el componente Nav -->
+  <Nav
+    id="navMenu"
+    class="hidden absolute top-0 left-0 w-full bg-customWhite mt-12 p-4 rounded-lg"
   />
-  <Nav/>
 </header>
 
-<style>
-  .menu-link {
-    position: relative;
-  }
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.getElementById("menuToggle");
+    const dropdown = document.getElementById("dropdown");
 
-  .menu-link::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -3px;
-    width: 100%;
-    height: 2px;
-    background-color: transparent;
-    transition: background-color 0.3s;
-  }
+    if (menuToggle && dropdown) {
+      menuToggle.addEventListener("click", function () {
+        dropdown.classList.toggle("hidden");
+      });
 
-  .menu-link:hover::after {
-    background-color: #2e2d26;
-  }
-</style>
+      // Cerrar el menú si se hace clic fuera de él
+      document.addEventListener("click", function (event) {
+        const isClickInsideMenu = dropdown?.contains(event.target as Node);
+        const isClickOnMenuToggle = menuToggle?.contains(event.target as Node);
+
+        if (!isClickInsideMenu && !isClickOnMenuToggle) {
+          dropdown.classList.add("hidden");
+        }
+      });
+
+      // Cerrar el menú al maximizar la ventana
+      window.addEventListener("resize", function () {
+        if (!window.matchMedia("(max-width: 640px)").matches) {
+          dropdown.classList.add("hidden");
+        }
+      });
+    }
+  });
+</script>

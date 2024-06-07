@@ -3,65 +3,52 @@ import Map from "../components/Map.astro";
 import RRSS from "../components/RRSS.astro";
 ---
 
-<footer class="mx-auto block text-sm text-center max-w-screen-lg">
-  <div class="flex gap-20 flex-wrap">
+<footer class="mx-auto text-sm text-center max-w-screen-lg px-4 py-8">
+  <div class="grid gap-10 lg:grid-cols-5 grid-cols-1 sm:grid-cols-1">
     <div class="flex flex-col items-center">
       <h1 class="text-customBlack text-2xl font-semibold md:text-3xl">
         Bristol Koffee
       </h1>
       <img
-        class="rounded-full w-40 h-40"
+        class="rounded-full w-24 h-24 md:w-40 md:h-40 mt-4"
         src="https://res.cloudinary.com/dtmrroz8t/image/upload/v1714293432/Bristol%20Koffee/bristol_logo_tmp_nouozw.png"
         alt="bristol logo"
       />
     </div>
-    <div class="flex flex-col py-1.5 items-start">
+    <div class="flex flex-col items-center lg:items-start py-1.5">
       <span class="font-bold">MENÚ</span>
-      <div class="flex flex-col gap-x-10 gap-y-4 items-start opacity-75 mt-6">
+      <div class="flex flex-col gap-y-4 items-center lg:items-start opacity-75 mt-6">
         <a href="/" class="hover:underline hover:text-customYellow">Inicio</a>
-        <a href="/carta" class="hover:underline hover:text-customYellow"
-          >Carta</a
-        >
-        <a href="/sobrenosotros" class="hover:underline hover:text-customYellow"
-          >Sobre Nosotros</a
-        >
-        <a href="/cafe" class="hover:underline hover:text-customYellow"
-          >Nuestro Café</a
-        >
-        <a href="/contacto" class="hover:underline hover:text-customYellow"
-          >Contacto</a
-        >
+        <a href="/carta" class="hover:underline hover:text-customYellow">Carta</a>
+        <a href="/sobrenosotros" class="hover:underline hover:text-customYellow">Sobre Nosotros</a>
+        <a href="/cafe" class="hover:underline hover:text-customYellow">Nuestro Café</a>
+        <a href="/contacto" class="hover:underline hover:text-customYellow">Contacto</a>
       </div>
     </div>
-    <div class="flex flex-col py-1.5 items-start">
+    <div class="flex flex-col items-center lg:items-start py-1.5 lg:col-span-2">
       <span class="font-bold">INFORMACIÓN DE CONTACTO</span>
-      <div class="flex flex-col gap-x-10 gap-y-4 items-start opacity-75 mt-6">
-        <p>Tómate un ☕ con nosotros, puedes encontrarnos en:</p>
-        <p>Rambla de Modolell, 43, 08840 Viladecans, Barcelona</p>
-        <Map />
+      <div class="flex flex-col gap-y-4 items-center lg:items-start opacity-75 mt-6">
+        <p class="text-center lg:text-left">Tómate un ☕ con nosotros, puedes encontrarnos en:</p>
+        <p class="text-center lg:text-left">Rambla de Modolell, 43, 08840 Viladecans, Barcelona</p>
+        <div class="w-full lg:w-auto mt-4">
+          <Map />
+        </div>
       </div>
     </div>
-    <div class="flex flex-col py-1.5 items-start">
+    <div class="flex flex-col items-center lg:items-start py-1.5">
       <span class="font-bold">LEGAL</span>
-      <div class="flex flex-col gap-x-10 gap-y-4 items-start opacity-75 mt-6">
-        <a href="/legal" class="hover:underline hover:text-customYellow"
-          >Aviso Legal</a
-        >
-        <a href="/privacidad" class="hover:underline hover:text-customYellow"
-          >Política de Privacidad</a
-        >
-        <a href="/cookies" class="hover:underline hover:text-customYellow"
-          >Política de Cookies</a
-        >
+      <div class="flex flex-col gap-y-4 items-center lg:items-start opacity-75 mt-6">
+        <a href="/legal" class="hover:underline hover:text-customYellow">Aviso Legal</a>
+        <a href="/privacidad" class="hover:underline hover:text-customYellow">Política de Privacidad</a>
+        <a href="/cookies" class="hover:underline hover:text-customYellow">Política de Cookies</a>
       </div>
     </div>
   </div>
   <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-4" />
-  <RRSS />
+  <div class="flex justify-center mt-4">
+    <RRSS />
+  </div>
   <div class="mb-10 mt-4">
-    <span
-      >© 2024 <a href="#" class="hover:underline">Bristol Koffee™</a>. Todos
-      los derechos reservados.
-    </span>
+    <span>© 2024 <a href="#" class="hover:underline">Bristol Koffee™</a>. Todos los derechos reservados.</span>
   </div>
 </footer>
